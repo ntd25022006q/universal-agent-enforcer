@@ -1,0 +1,24 @@
+{
+  "comment": "Universal Agent Enforcer: MCP Configurations for Chrome DevTools and CloakBrowser",
+  "claude_desktop_config": {
+    "mcpServers": {
+      "chrome-devtools": {
+        "command": "npx",
+        "args": ["-y", "@chromedevtools/mcp", "--remote-debugging-port=9222"]
+      }
+    }
+  },
+  "cursor_mcp_config": {
+    "name": "chrome-devtools-mcp",
+    "type": "command",
+    "command": "npx -y @chromedevtools/mcp --remote-debugging-port=9222"
+  },
+  "windsurf_mcp_config": {
+    "mcpServers": {
+      "chrome-devtools": {
+        "command": "npx",
+        "args": ["-y", "@chromedevtools/mcp", "--remote-debugging-port=9222"]
+      }
+    }
+  }
+}

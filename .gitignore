@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+.output/
+
+# AI Agent logs, backups and reports
+.agent_backups/
+.agent_logs/screenshots/*_current.png
+.agent_logs/error_screenshot.png
+.agent_logs/devtools_report.txt
+.agent_logs/execution_state.json
+
+# Test results and browser caches
+test-results/
+playwright-report/
+blob-report/
+.playwright-cache/
+stealth_test_result.png
+stealth_test_result_baseline.png
+
+# IDE configs
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -1,0 +1,48 @@
+# =============================================================================
+# Universal Agent Enforcer — Cline / Roo Code Constraint Rules
+# =============================================================================
+# This file is automatically loaded by Cline and Roo Code AI assistants.
+# All AI-generated code must comply with these enforcement rules.
+# =============================================================================
+
+## Zero Mock Data Policy
+- NEVER write mock data, mock API endpoints, hardcoded dummy JSON, or placeholder responses.
+- When real credentials or integrations are needed, HALT and request information from the user.
+- Use the Interactive CLI (`node scripts/interactive-cli.js`) to prompt for missing data.
+
+## Unauthorized Deletion Prevention
+- NEVER delete or overwrite codebase files without explicit user confirmation.
+- Protected paths: `src/`, `config/`, `scripts/`, `tests/`.
+- The Backup Guard (`npm run agent:backup`) takes snapshots before mutations.
+- If deletion is detected, auto-restore via `node scripts/backup-guard.js`.
+
+## Security and Code Health
+- Follow Clean Architecture and layered module structure.
+- TypeScript strict mode is mandatory — no `any`, proper interfaces, types, and generics.
+- The Fact Checker (`npm run agent:fact-check`) scans for hardcoded API keys.
+- NEVER commit real API keys, tokens, or secrets. Use environment variables via `.env`.
+
+## Structured Review Protocol
+- Before writing any code, output a structured review log:
+  1. **Proposal** — Intended change description
+  2. **Critique** — Security, code rot, dependency, and performance analysis
+  3. **Optimization** — Improvements addressing the critique
+- The Orchestrator enforces these structured review steps through its validation pipeline.
+
+## Cloudflare Bypass
+- When testing or scraping live environments, use Chrome DevTools MCP connected to CloakBrowser on port 9222.
+- Fallback to local stealth Chromium if CloakBrowser is unavailable.
+
+## Complete Quality Gate Compliance
+- Before declaring any task complete, run `npm run agent:orchestrate`.
+- Any gate failure requires addressing errors and re-running until all checks pass.
+- Maximum iteration count is configured via `MAX_ORCHESTRATE_LOOPS` env variable.
+
+## Import Verification
+- All imports must reference packages declared in `package.json` or built-in Node.js modules.
+- The Fact Checker validates imports against `node_modules/` at build time.
+
+## Test Coverage
+- All new features must include Vitest unit tests (`tests/*.test.js`).
+- E2E tests use Playwright (`tests/*.spec.js`).
+- The Test Runner includes infinite repair loop detection (3 consecutive same-error terminations = halt).
