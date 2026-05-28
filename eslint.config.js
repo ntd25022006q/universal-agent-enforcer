@@ -8,7 +8,7 @@ export default tseslint.config(
 
   // Global ignores
   {
-    ignores: ['dist/**', 'build/**', 'node_modules/**', '.backup/**'],
+    ignores: ['dist/**', 'build/**', 'node_modules/**', '.backup/**', '.agent_backups/**'],
   },
 
   // TypeScript source files (Node.js ESM)

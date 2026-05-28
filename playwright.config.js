@@ -26,7 +26,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'DEV_SERVER_PORT=3001 tsx scripts/server.ts',
+    command: 'cross-env DEV_SERVER_PORT=3001 tsx scripts/server.ts',
     url: 'http://localhost:3001',
     reuseExistingServer: false,
     timeout: 10000,
