@@ -3,7 +3,11 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import module from 'module';
 
-const builtinModules: readonly string[] = module.builtinModules || (typeof (process as any).binding === 'function' ? Object.keys((process as any).binding('natives')) : []);
+const builtinModules: readonly string[] =
+  module.builtinModules ||
+  (typeof (process as any).binding === 'function'
+    ? Object.keys((process as any).binding('natives'))
+    : []);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const workspaceDir = path.resolve(__dirname, '..');
