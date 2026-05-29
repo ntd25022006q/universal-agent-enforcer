@@ -23,11 +23,16 @@ interface AuditResult {
 }
 
 function getDirSize(p: string): number {
+  if (!fs.existsSync(p)) return 0;
   let size = 0;
   fs.readdirSync(p).forEach((f: string) => {
     const fp = path.join(p, f);
-    if (fs.statSync(fp).isDirectory()) size += getDirSize(fp);
-    else size += fs.statSync(fp).size;
+    try {
+      if (fs.statSync(fp).isDirectory()) size += getDirSize(fp);
+      else size += fs.statSync(fp).size;
+    } catch {
+      // Skip files that cannot be accessed
+    }
   });
   return size;
 }

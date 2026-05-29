@@ -9,7 +9,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const workspaceDir = path.resolve(__dirname, '..');
 
 const MAX_LOOPS = parseInt(process.env.MAX_ORCHESTRATE_LOOPS || '5', 10);
-const TARGET_URL = 'http://localhost:3000';
+const DEV_SERVER_PORT = process.env.DEV_SERVER_PORT || '3001';
+const TARGET_URL = `http://localhost:${DEV_SERVER_PORT}`;
 
 function runStep(name: string, command: string): boolean {
   console.log(`\n=============================================================================`);
@@ -104,9 +105,10 @@ async function orchestrate(): Promise<void> {
     serverProcess = spawn('tsx', ['scripts/server.ts'], {
       cwd: workspaceDir,
       stdio: 'pipe',
+      env: { ...process.env, DEV_SERVER_PORT },
     });
 
-    // Wait 1.5 seconds for dev server to bind to port 3000
+    // Wait 1.5 seconds for dev server to bind to the configured port
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     let browserCheckSuccess = false;

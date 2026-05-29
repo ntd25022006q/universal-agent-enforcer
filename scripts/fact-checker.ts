@@ -45,8 +45,9 @@ function getJsAndTsFiles(dirPath: string): string[] {
       if (
         file !== 'node_modules' &&
         file !== '.git' &&
-        file !== 'scripts' &&
-        file !== '.agent_backups'
+        file !== '.agent_backups' &&
+        file !== 'dist' &&
+        file !== 'build'
       ) {
         filesList = filesList.concat(getJsAndTsFiles(filePath));
       }
@@ -86,14 +87,22 @@ function verifyImports(): void {
   const files = getJsAndTsFiles(workspaceDir);
   let hasHallucination = false;
 
-  // ESM Import Regex e.g. import { x } from 'y' or import * as z from 'y' or import 'y'
+  // ESM Import Regex e.g. import { x } from 'pkg' or import * as z from 'pkg'
   const esmRegex = /import\s+[\s\S]*?\s+from\s+['"]([^'"]+)['"]/g;
-  // CommonJS require regex e.g. const a = require('y')
+  // CommonJS require regex e.g. const a = require('pkg')
   const cjsRegex = /require\(\s*['"]([^'"]+)['"]\s*\)/g;
+
+  // Strip single-line and multi-line comments to avoid false positives from example code in comments
+  const stripComments = (src: string): string => {
+    return src
+      .replace(/\/\*[\s\S]*?\*\//g, '') // Multi-line comments
+      .replace(/\/\/.*$/gm, ''); // Single-line comments
+  };
 
   files.forEach((filePath: string) => {
     const relativeFilePath = path.relative(workspaceDir, filePath);
-    const content = fs.readFileSync(filePath, 'utf-8');
+    const rawContent = fs.readFileSync(filePath, 'utf-8');
+    const content = stripComments(rawContent);
     let match: RegExpExecArray | null;
 
     const verifyPackage = (importString: string): void => {

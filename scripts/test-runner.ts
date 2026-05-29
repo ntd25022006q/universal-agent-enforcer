@@ -42,15 +42,10 @@ function runTests(): void {
 
   try {
     console.log('Running Unit & Integration Tests...');
-    try {
-      execSync('npm run test', { stdio: 'inherit', cwd: workspaceDir });
-    } catch (err: unknown) {
-      testSuccess = false;
-      currentError = err instanceof Error ? err.message : 'Unit tests failed';
-    }
-  } catch (error: unknown) {
+    execSync('npm run test', { stdio: 'inherit', cwd: workspaceDir });
+  } catch (err: unknown) {
     testSuccess = false;
-    currentError = error instanceof Error ? error.message : String(error);
+    currentError = err instanceof Error ? err.message : 'Unit tests failed';
   }
 
   if (!testSuccess) {

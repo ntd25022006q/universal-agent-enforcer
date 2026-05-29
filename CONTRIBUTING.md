@@ -6,7 +6,7 @@ Thank you for your interest in contributing to Universal Agent Enforcer. This do
 
 ### Prerequisites
 
-- Node.js >= 18
+- Node.js >= 20
 - npm (comes with Node.js)
 - Approximately 500 MB disk space for browser binaries
 

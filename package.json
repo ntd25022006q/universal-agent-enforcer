@@ -22,7 +22,9 @@
     "agent:test-run": "tsx scripts/test-runner.ts",
     "agent:visual": "tsx scripts/visual-regression.ts",
     "agent:orchestrate": "tsx scripts/orchestrator.ts",
-    "agent:audit": "tsx scripts/quality-auditor.ts"
+    "agent:audit": "tsx scripts/quality-auditor.ts",
+    "agent:cli": "tsx scripts/interactive-cli.ts",
+    "agent:validate-config": "tsx scripts/config-validator.ts"
   },
   "keywords": [
     "ai-agent",
