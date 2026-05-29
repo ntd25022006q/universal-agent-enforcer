@@ -36,7 +36,7 @@
   "author": "ntd25022006q",
   "license": "MIT",
   "devDependencies": {
-    "@eslint/js": "^9.39.4",
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.44.1",
     "@types/node": "^20.14.0",
     "cross-env": "^10.1.0",
