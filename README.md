@@ -22,14 +22,14 @@ Deterministic validation scripts for AI coding agent output. Catch hallucinated 
 
 AI coding agents (Cursor, Windsurf, Cline, Roo Code) generate code that compiles and passes existing tests but breaks in production due to hallucinated dependencies, missing files, leaked secrets, or runtime exceptions that only surface when a real browser loads the page.
 
-| Failure Mode           | What Happens                                    | Why CI Misses It                            |
-| :--------------------- | :---------------------------------------------- | :------------------------------------------ |
-| Hallucinated imports   | Agent imports packages not in `package.json`    | Type-checkers assume imports resolve        |
-| Hardcoded secrets      | Agent embeds API keys in source files           | Secret scanners are optional                |
+| Failure Mode           | What Happens                                    | Why CI Misses It                             |
+| :--------------------- | :---------------------------------------------- | :------------------------------------------- |
+| Hallucinated imports   | Agent imports packages not in `package.json`    | Type-checkers assume imports resolve         |
+| Hardcoded secrets      | Agent embeds API keys in source files           | Secret scanners are optional                 |
 | Deleted files          | Agent removes files during refactoring          | CI starts fresh; cannot detect missing files |
-| Runtime console errors | Code throws uncaught exceptions in the browser  | Unit tests do not catch DOM-level errors    |
-| Layout breakage        | CSS/HTML changes render blank pages             | No visual regression baseline               |
-| Infinite repair loops  | Agent repeats the same failing fix indefinitely | No loop detection                           |
+| Runtime console errors | Code throws uncaught exceptions in the browser  | Unit tests do not catch DOM-level errors     |
+| Layout breakage        | CSS/HTML changes render blank pages             | No visual regression baseline                |
+| Infinite repair loops  | Agent repeats the same failing fix indefinitely | No loop detection                            |
 
 **Universal Agent Enforcer** is 14 TypeScript scripts that run deterministic checks on agent output, verifying imports resolve, catching runtime console errors via CDP, auto-restoring deleted files, and comparing screenshots for layout breakage. Nothing AI-powered -- just validation scripts that exit with code `1` when something is wrong.
 
