@@ -33,7 +33,7 @@
     "guardrails",
     "orchestrator"
   ],
-  "author": "Antigravity",
+  "author": "ntd25022006q",
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^9.39.4",

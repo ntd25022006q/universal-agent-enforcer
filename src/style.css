@@ -419,3 +419,18 @@ body {
 .log-item .message {
   color: var(--text-secondary);
 }
+
+/* ==============================================================================
+   FOOTER
+   ============================================================================== */
+.site-footer {
+  text-align: center;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
