@@ -9,6 +9,7 @@ node_modules/
 .env.development.local
 .env.test.local
 .env.production.local
+.env*.local
 
 # Build outputs
 dist/
@@ -19,10 +20,8 @@ out/
 
 # AI Agent logs, backups and reports
 .agent_backups/
-.agent_logs/screenshots/*_current.png
-.agent_logs/error_screenshot.png
-.agent_logs/devtools_report.txt
-.agent_logs/execution_state.json
+.agent_logs/
+!.agent_logs/.gitkeep
 
 # Test results and browser caches
 test-results/
@@ -31,6 +30,7 @@ blob-report/
 .playwright-cache/
 stealth_test_result.png
 stealth_test_result_baseline.png
+coverage/
 
 # IDE configs
 .idea/
@@ -40,3 +40,13 @@ stealth_test_result_baseline.png
 *.njsproj
 *.sln
 *.sw?
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

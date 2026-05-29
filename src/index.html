@@ -18,14 +18,14 @@
       <!-- Sidebar -->
       <aside class="sidebar">
         <div class="logo-area">
-          <span class="logo-icon">🛡️</span>
+          <span class="logo-icon">&#128737;&#65039;</span>
           <span class="logo-text">AgentEnforcer</span>
         </div>
         <nav class="nav-menu">
-          <a href="#" class="nav-item active">📊 Overview</a>
-          <a href="#" class="nav-item">⚙️ Settings</a>
-          <a href="#" class="nav-item">🧩 MCP Tools</a>
-          <a href="#" class="nav-item">📈 Performance</a>
+          <a href="#" class="nav-item active">Overview</a>
+          <a href="#" class="nav-item">Settings</a>
+          <a href="#" class="nav-item">MCP Tools</a>
+          <a href="#" class="nav-item">Performance</a>
         </nav>
         <div class="user-profile">
           <div class="avatar">Dev</div>
@@ -46,22 +46,34 @@
           </div>
         </header>
 
-        <!-- Stat Cards — populated dynamically by app.js -->
+        <!-- Demo Notice -->
+        <div class="demo-notice">
+          <strong>Demonstration Dashboard</strong> &mdash;
+          This dashboard is a demonstration UI used to exercise the enforcement
+          pipeline (DevTools Monitor, E2E tests, visual regression). Metrics
+          and log entries are sample data until a real pipeline run produces
+          actual values.
+        </div>
+
+        <!-- Stat Cards - populated dynamically by app.js -->
         <section class="metrics-grid" id="metrics-grid"></section>
 
         <!-- Control Card and Chart -->
         <section class="content-grid">
           <div class="chart-container card">
-            <h2>Neural Weights Optimization</h2>
-            <p class="chart-desc">Calculate system optimization weights in real time.</p>
+            <h2>Weight Calculation Demo</h2>
+            <p class="chart-desc">
+              Demonstration calculator that multiplies a weight factor by a
+              fixed coefficient (1.42). This exercises the DevTools Monitor
+              click handler and E2E assertion pipeline.
+            </p>
 
             <div class="calculator-form">
               <div class="form-group">
                 <label for="input-factor">Weight Factor</label>
                 <input type="number" id="input-factor" value="1.25" placeholder="e.g. 1.25" />
               </div>
-              <!-- Intentional UI bug trigger: clicking this will call a JS function that references a wrong element ID -->
-              <button id="btn-optimize" class="btn-primary">Optimize Weights</button>
+              <button id="btn-optimize" class="btn-primary">Calculate Coefficient</button>
 
               <div class="result-area">
                 <p>Optimization Coefficient: <strong id="result-coefficient">1.00</strong></p>
@@ -71,6 +83,7 @@
 
           <div class="audit-log card">
             <h2>Enforcer Audit Log</h2>
+            <p class="log-subtitle">Sample entries for demonstration purposes</p>
             <ul class="log-list">
               <li class="log-item">
                 <span class="time">23:44</span>
@@ -82,7 +95,7 @@
               </li>
               <li class="log-item">
                 <span class="time">23:40</span>
-                <span class="message">stealth-browser connected to remote debug.</span>
+                <span class="message">Stealth-browser connected to remote debug.</span>
               </li>
             </ul>
           </div>

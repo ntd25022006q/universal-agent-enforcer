@@ -12,6 +12,7 @@
   --accent-hover: hsl(265, 85%, 72%);
   --green: hsl(145, 80%, 45%);
   --red: hsl(355, 85%, 55%);
+  --yellow: hsl(45, 90%, 55%);
   --font-main: 'Inter', sans-serif;
   --font-logo: 'Outfit', sans-serif;
   --shadow-main: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
@@ -62,6 +63,20 @@ body {
 .dashboard-container {
   display: flex;
   min-height: 100vh;
+}
+
+/* ==============================================================================
+   DEMO NOTICE BANNER
+   ============================================================================== */
+.demo-notice {
+  background: rgba(234, 179, 8, 0.1);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--yellow);
+  line-height: 1.5;
 }
 
 /* ==============================================================================
@@ -246,6 +261,11 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.metric-value.metric-na {
+  color: var(--text-secondary);
+  font-size: 1.4rem;
+}
+
 .metric-trend {
   font-size: 0.75rem;
   font-weight: 600;
@@ -257,6 +277,12 @@ body {
 
 .metric-trend.down {
   color: var(--accent-hover);
+}
+
+.metric-trend-na {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  font-style: italic;
 }
 
 /* ==============================================================================
@@ -362,12 +388,18 @@ body {
 }
 
 /* Audit Logs */
+.log-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
 .log-list {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 .log-item {
@@ -381,6 +413,7 @@ body {
 .log-item .time {
   color: var(--accent-hover);
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .log-item .message {
