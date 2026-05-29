@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import module from 'module';
 
-const builtinModules: string[] = module.builtinModules || Object.keys(process.binding('natives'));
+const builtinModules: readonly string[] = module.builtinModules || (typeof (process as any).binding === 'function' ? Object.keys((process as any).binding('natives')) : []);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const workspaceDir = path.resolve(__dirname, '..');
@@ -104,7 +104,7 @@ function verifyImports(): void {
         const parts = importString.split('/');
         mainPkg = parts.slice(0, 2).join('/');
       } else {
-        mainPkg = importString.split('/')[0];
+        mainPkg = importString.split('/')[0] ?? '';
       }
 
       // Check if it is a built-in Node module

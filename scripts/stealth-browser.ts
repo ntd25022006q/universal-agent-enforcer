@@ -3,7 +3,7 @@ import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import http from 'http';
 
 // Apply Stealth Plugin
-puppeteer.use(StealthPlugin());
+(puppeteer as any).use(StealthPlugin());
 
 const REMOTE_DEBUG_PORT = process.env.REMOTE_DEBUG_PORT || '9222';
 const REMOTE_DEBUG_URL = `http://127.0.0.1:${REMOTE_DEBUG_PORT}/json`;
@@ -60,7 +60,7 @@ export async function getStealthBrowser(): Promise<StealthBrowserResult> {
     console.log(`You can configure chrome-devtools-mcp using port ${REMOTE_DEBUG_PORT}`);
     try {
       // Connect directly using the extracted WebSocket URL
-      const browser = await puppeteer.connect({
+      const browser = await (puppeteer as any).connect({
         browserWSEndpoint: wsUrl,
         defaultViewport: null,
       });
@@ -85,7 +85,7 @@ export async function getStealthBrowser(): Promise<StealthBrowserResult> {
   console.log(
     '[Stealth Browser] Launching local Chromium instance with puppeteer-extra-stealth...',
   );
-  const browser = await puppeteer.launch({
+  const browser = await (puppeteer as any).launch({
     headless: 'new',
     args: [
       '--no-sandbox',

@@ -28,7 +28,7 @@ async function monitorApp(): Promise<void> {
     await client.send('Runtime.enable');
 
     // Attach listeners
-    client.on('Console.messageAdded', (event: Record<string, unknown>) => {
+    client.on('Console.messageAdded', (event: any) => {
       const message = event.message as Record<string, unknown>;
       if (message.level === 'error') {
         const errText = `[Console Error] [${message.source || 'unknown'}] ${message.text || ''} (${message.url || 'unknown'} line ${message.line || 0})`;
