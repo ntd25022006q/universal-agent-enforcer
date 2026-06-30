@@ -434,3 +434,126 @@ body {
 .site-footer p {
   margin: 0;
 }
+
+/* ==============================================================================
+   VALIDATOR DASHBOARD (new UI)
+   ============================================================================== */
+.validator-list-host {
+  margin-top: 1rem;
+}
+
+ul.validator-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+li.validator-row {
+  display: grid;
+  grid-template-columns: 160px 1fr auto;
+  gap: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.validator-row .validator-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: var(--font-main);
+}
+
+.validator-row .validator-desc {
+  color: var(--text-secondary);
+}
+
+.validator-row .validator-status {
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: lowercase;
+  min-width: 70px;
+  text-align: center;
+}
+
+.status-pending {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+}
+
+.status-pass {
+  background: rgba(72, 199, 142, 0.15);
+  color: var(--green);
+}
+
+.status-warn {
+  background: rgba(255, 196, 0, 0.15);
+  color: var(--yellow);
+}
+
+.status-fail {
+  background: rgba(255, 86, 99, 0.18);
+  color: var(--red);
+}
+
+.metric-pass {
+  color: var(--green) !important;
+}
+
+.metric-warn {
+  color: var(--yellow) !important;
+}
+
+.metric-fail {
+  color: var(--red) !important;
+}
+
+.log-area {
+  height: 320px;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.log-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 0.15rem 0;
+}
+
+.log-line.log-info {
+  color: var(--text-secondary);
+}
+
+.log-line.log-warn {
+  color: var(--yellow);
+}
+
+.log-line.log-error,
+.log-line.log-fail {
+  color: var(--red);
+}
+
+.log-line.log-pass {
+  color: var(--green);
+}
+
+.log-line.log-debug {
+  color: var(--accent-hover);
+}
+
+#btn-run-all:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

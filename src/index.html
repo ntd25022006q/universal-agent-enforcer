@@ -39,62 +39,58 @@
       <!-- Main Content Area -->
       <main class="main-content">
         <header class="main-header">
-          <h1>Overview Dashboard</h1>
+          <h1>Validator Dashboard</h1>
           <div class="system-status">
             <span class="status-dot green"></span>
-            <span class="status-text">All Systems Operational</span>
+            <span class="status-text" id="status-bar">Idle</span>
           </div>
         </header>
 
-        <!-- Demo Notice -->
-        <div class="demo-notice">
-          <strong>Demonstration Dashboard</strong> &mdash; This dashboard is a demonstration UI used
-          to exercise the enforcement pipeline (DevTools Monitor, E2E tests, visual regression).
-          Metrics and log entries are sample data until a real pipeline run produces actual values.
-        </div>
-
-        <!-- Stat Cards - populated dynamically by app.js -->
-        <section class="metrics-grid" id="metrics-grid"></section>
+        <!-- Stat Cards — populated dynamically by app.js -->
+        <section class="metrics-grid" id="metrics-grid">
+          <div class="metric-card">
+            <p class="metric-label">Total</p>
+            <p class="metric-value" id="stat-total">0</p>
+            <span class="metric-trend-na">Validators registered</span>
+          </div>
+          <div class="metric-card">
+            <p class="metric-label">Pass</p>
+            <p class="metric-value metric-pass" id="stat-pass">0</p>
+            <span class="metric-trend-na">Successful validations</span>
+          </div>
+          <div class="metric-card">
+            <p class="metric-label">Warn</p>
+            <p class="metric-value metric-warn" id="stat-warn">0</p>
+            <span class="metric-trend-na">Soft failures</span>
+          </div>
+          <div class="metric-card">
+            <p class="metric-label">Fail</p>
+            <p class="metric-value metric-fail" id="stat-fail">0</p>
+            <span class="metric-trend-na">Blocking errors</span>
+          </div>
+        </section>
 
         <!-- Control Card and Chart -->
         <section class="content-grid">
           <div class="chart-container card">
-            <h2>Weight Calculation Demo</h2>
+            <h2>Enforcement Validators</h2>
             <p class="chart-desc">
-              Demonstration calculator that multiplies a weight factor by a fixed coefficient
-              (1.42). This exercises the DevTools Monitor click handler and E2E assertion pipeline.
+              The 14 built-in validators are run sequentially when you click
+              <em>Run All Validators</em>. Each row updates from <code>pending</code>
+              to <code>pass</code>, <code>warn</code>, or <code>fail</code> as the
+              pipeline progresses.
             </p>
 
             <div class="calculator-form">
-              <div class="form-group">
-                <label for="input-factor">Weight Factor</label>
-                <input type="number" id="input-factor" value="1.25" placeholder="e.g. 1.25" />
-              </div>
-              <button id="btn-optimize" class="btn-primary">Calculate Coefficient</button>
-
-              <div class="result-area">
-                <p>Optimization Coefficient: <strong id="result-coefficient">1.00</strong></p>
-              </div>
+              <button id="btn-run-all" class="btn-primary">Run All Validators</button>
+              <div id="validator-list" class="validator-list-host"></div>
             </div>
           </div>
 
           <div class="audit-log card">
             <h2>Enforcer Audit Log</h2>
-            <p class="log-subtitle">Sample entries for demonstration purposes</p>
-            <ul class="log-list">
-              <li class="log-item">
-                <span class="time">23:44</span>
-                <span class="message">Visual regression baseline generated.</span>
-              </li>
-              <li class="log-item">
-                <span class="time">23:43</span>
-                <span class="message">Fact-check passed. 0 fake modules imported.</span>
-              </li>
-              <li class="log-item">
-                <span class="time">23:40</span>
-                <span class="message">Stealth-browser connected to remote debug.</span>
-              </li>
-            </ul>
+            <p class="log-subtitle">Live output streamed from each validator.</p>
+            <div id="log-area" class="log-area" role="log" aria-live="polite"></div>
           </div>
         </section>
       </main>
@@ -104,6 +100,6 @@
       <p>MIT &mdash; Copyright &copy; 2026 Nguyen Tien Dat. All rights reserved.</p>
     </footer>
 
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>
