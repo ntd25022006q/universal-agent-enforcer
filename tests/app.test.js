@@ -156,9 +156,7 @@ describe('renderValidatorList', () => {
   });
 
   it('escapes HTML in validator fields to prevent injection', () => {
-    const html = renderValidatorList([
-      { name: '<script>', description: 'x & y' },
-    ]);
+    const html = renderValidatorList([{ name: '<script>', description: 'x & y' }]);
     expect(html).not.toContain('<script>');
     expect(html).toContain('&lt;script&gt;');
     expect(html).toContain('x &amp; y');

@@ -6,9 +6,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
 
-const pkg = JSON.parse(
-  fs.readFileSync(path.resolve(repoRoot, 'package.json'), 'utf-8'),
-);
+const pkg = JSON.parse(fs.readFileSync(path.resolve(repoRoot, 'package.json'), 'utf-8'));
 
 /**
  * Real repository-structure tests.
@@ -145,30 +143,21 @@ describe('Validator Scripts — Function Definitions', () => {
     { file: 'scripts/build-analyzer.ts', fn: 'checkBuild' },
   ];
 
-  it.each(expectations)(
-    '$file defines function "$fn"',
-    ({ file, fn }) => {
-      const fullPath = path.resolve(repoRoot, file);
-      expect(fs.existsSync(fullPath)).toBe(true);
-      const src = fs.readFileSync(fullPath, 'utf-8');
-      // Matches: "function name(", "async function name(", or "export async function name("
-      expect(src).toMatch(new RegExp(`(export\\s+)?(async\\s+)?function\\s+${fn}\\s*\\(`));
-    },
-  );
+  it.each(expectations)('$file defines function "$fn"', ({ file, fn }) => {
+    const fullPath = path.resolve(repoRoot, file);
+    expect(fs.existsSync(fullPath)).toBe(true);
+    const src = fs.readFileSync(fullPath, 'utf-8');
+    // Matches: "function name(", "async function name(", or "export async function name("
+    expect(src).toMatch(new RegExp(`(export\\s+)?(async\\s+)?function\\s+${fn}\\s*\\(`));
+  });
 
   it('visual-regression.ts exports verifyUILayout', () => {
-    const src = fs.readFileSync(
-      path.resolve(repoRoot, 'scripts/visual-regression.ts'),
-      'utf-8',
-    );
+    const src = fs.readFileSync(path.resolve(repoRoot, 'scripts/visual-regression.ts'), 'utf-8');
     expect(src).toMatch(/export\s+async\s+function\s+verifyUILayout\s*\(/);
   });
 
   it('stealth-browser.ts exports getStealthBrowser', () => {
-    const src = fs.readFileSync(
-      path.resolve(repoRoot, 'scripts/stealth-browser.ts'),
-      'utf-8',
-    );
+    const src = fs.readFileSync(path.resolve(repoRoot, 'scripts/stealth-browser.ts'), 'utf-8');
     expect(src).toMatch(/export\s+async\s+function\s+getStealthBrowser\s*\(/);
   });
 });

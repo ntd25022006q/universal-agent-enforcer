@@ -183,11 +183,12 @@ export function renderValidatorList(validators) {
   if (validators == null) return '';
   if (!Array.isArray(validators)) return '';
   const rows = validators.map((v) => {
-    const esc = (s) => String(s ?? '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+    const esc = (s) =>
+      String(s ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
     const name = esc(v?.name);
     const desc = esc(v?.description);
     return (
